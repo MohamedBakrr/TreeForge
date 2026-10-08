@@ -7,7 +7,7 @@ interface SeoHeadProps {
     noIndex?: boolean;
 }
 
-const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://treeforge.vercel.app').replace(/\/$/, '');
+const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://tree-forge.vercel.app').replace(/\/$/, '');
 
 function setMeta(attribute: 'name' | 'property', key: string, content: string) {
     let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);

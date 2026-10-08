@@ -1,15 +1,15 @@
-# TreeForge
+<h1><img src="./public/treeforge.svg" alt="" width="40" align="center" /> TreeForge</h1>
 
 > An interactive visual lab for understanding tree data structures, their invariants, and the algorithms that operate on them.
 
-[![Live app](https://img.shields.io/badge/live-treeforge.vercel.app-C4FF68?style=flat&labelColor=080909)](https://treeforge.vercel.app)
+[![Live app](https://img.shields.io/badge/live-tree--forge.vercel.app-C4FF68?style=flat&labelColor=080909)](https://tree-forge.vercel.app)
 [![Source](https://img.shields.io/badge/source-GitHub-171918?logo=github)](https://github.com/MohamedBakrr/treeforge)
 [![React](https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 TreeForge pairs concise lessons with an interactive workspace. Learn a tree's rules, build real search trees, and follow traversals one operation at a time.
 
-**Live application:** [treeforge.vercel.app](https://treeforge.vercel.app)  
+**Live application:** [tree-forge.vercel.app](https://tree-forge.vercel.app)  
 **Source repository:** [github.com/MohamedBakrr/treeforge](https://github.com/MohamedBakrr/treeforge)
 
 ---
@@ -46,16 +46,16 @@ TreeForge pairs concise lessons with an interactive workspace. Learn a tree's ru
 
 | Structure | Core idea | Lesson |
 | --- | --- | --- |
-| General tree | A node may have any number of children. | [`/learn/general-tree`](https://treeforge.vercel.app/learn/general-tree) |
-| Binary tree | A node has at most two child positions; values are not necessarily ordered. | [`/learn/binary-tree`](https://treeforge.vercel.app/learn/binary-tree) |
-| Binary search tree | Every left-subtree value is smaller and every right-subtree value is larger than the node. | [`/learn/bst`](https://treeforge.vercel.app/learn/bst) |
-| AVL tree | A BST that rebalances to keep subtree heights within one. | [`/learn/avl`](https://treeforge.vercel.app/learn/avl) |
+| General tree | A node may have any number of children. | [`/learn/general-tree`](https://tree-forge.vercel.app/learn/general-tree) |
+| Binary tree | A node has at most two child positions; values are not necessarily ordered. | [`/learn/binary-tree`](https://tree-forge.vercel.app/learn/binary-tree) |
+| Binary search tree | Every left-subtree value is smaller and every right-subtree value is larger than the node. | [`/learn/bst`](https://tree-forge.vercel.app/learn/bst) |
+| AVL tree | A BST that rebalances to keep subtree heights within one. | [`/learn/avl`](https://tree-forge.vercel.app/learn/avl) |
 
 The general-tree and binary-tree pages are learning chapters backed by engine classes. The interactive editing workspace is currently available for BST and AVL.
 
 ## Interactive workspace
 
-Open the [BST workspace](https://treeforge.vercel.app/workspace/bst) or [AVL workspace](https://treeforge.vercel.app/workspace/avl).
+Open the [BST workspace](https://tree-forge.vercel.app/workspace/bst) or [AVL workspace](https://tree-forge.vercel.app/workspace/avl).
 
 ### Edit the structure
 
@@ -230,7 +230,7 @@ For a tree of height `h`:
 
 ## SEO and deployment
 
-The app is deployed as a Vite single-page application on Vercel. Vercel configuration supplies a route fallback for deep links and baseline response security headers.
+The app is deployed as a Vite single-page application on Vercel at [tree-forge.vercel.app](https://tree-forge.vercel.app). Vercel configuration supplies a route fallback for deep links and baseline response security headers.
 
 SEO includes:
 
@@ -240,7 +240,7 @@ SEO includes:
 - `public/robots.txt` and a sitemap of public learning routes.
 - `noindex,follow` on interactive workspace routes.
 
-Deploy by importing the GitHub repository into Vercel or running the Vercel CLI. The configured production defaults are:
+Deploy by importing the GitHub repository into Vercel or running the Vercel CLI. The production domain is `tree-forge.vercel.app`. The configured production defaults are:
 
 | Setting | Value |
 | --- | --- |
@@ -248,14 +248,14 @@ Deploy by importing the GitHub repository into Vercel or running the Vercel CLI.
 | Build command | `npm run build` |
 | Output directory | `dist` |
 
-After connecting the repository, configure the production domain in Vercel and make sure it matches the canonical URLs in `index.html`, `public/robots.txt`, and `public/sitemap.xml`. Update these files if the domain changes.
+After connecting the repository, configure `tree-forge.vercel.app` as the production domain in Vercel and make sure it matches the canonical URLs in `index.html`, `public/robots.txt`, and `public/sitemap.xml`. Update these files if the domain changes.
 
 ## Configuration
 
 `.env.example` documents the public site-origin variable:
 
 ```dotenv
-VITE_SITE_URL=https://treeforge.vercel.app
+VITE_SITE_URL=https://tree-forge.vercel.app
 ```
 
 Set `VITE_SITE_URL` in `.env.local` for local testing or in the Vercel project environment to control canonical links generated for client-side routes. Variables with the `VITE_` prefix are included in client code; never put secrets in them.
