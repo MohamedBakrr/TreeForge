@@ -50,16 +50,24 @@ export function LandingPage() {
             />
             <header className="mx-auto max-w-[1360px] px-[var(--page-gutter)]">
                 <div className="flex h-[76px] items-center justify-between border-b border-border-main">
-                    <Link to="/" aria-label="TreeForge home" className="flex items-center gap-3">
+                    <Link to="/" aria-label="TreeForge home" className="flex shrink-0 items-center gap-3">
                         <img src="/treeforge.svg" alt="" className="h-9 w-9" />
-                        <span className="text-xs font-semibold tracking-[0.2em] text-text-primary">TREEFORGE</span>
+                        <span className="hidden text-xs font-semibold tracking-[0.2em] text-text-primary min-[380px]:inline">
+                            TREEFORGE
+                        </span>
                     </Link>
 
                     <nav aria-label="Main navigation" className="flex items-center gap-2 text-sm sm:gap-5">
                         <RepositoryLink />
                         <Link to="/learn" className="hidden text-text-secondary transition-colors hover:text-text-primary sm:inline">Learn</Link>
-                        <Link to="/workspace/bst" className="tf-button tf-button-secondary min-h-10 px-4">
-                            Open workspace <ArrowRight aria-hidden="true" size={15} />
+                        <Link
+                            to="/workspace/bst"
+                            aria-label="Open the binary search tree workspace"
+                            className="tf-button tf-button-secondary min-h-10 shrink-0 whitespace-nowrap px-3 sm:px-4"
+                        >
+                            <span className="sm:hidden">Workspace</span>
+                            <span className="hidden sm:inline">Open workspace</span>
+                            <ArrowRight aria-hidden="true" size={15} />
                         </Link>
                     </nav>
                 </div>

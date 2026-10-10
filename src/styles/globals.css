@@ -22,7 +22,7 @@
 @layer base {
     :root {
         color-scheme: dark;
-        --page-gutter: clamp(1.25rem, 5vw, 4.5rem);
+        --page-gutter: clamp(1rem, 5vw, 4.5rem);
         --content-width: 80rem;
         --focus-ring: 0 0 0 2px #080909, 0 0 0 4px #c4ff68;
         --shadow-panel: 0 18px 48px rgb(0 0 0 / 24%);

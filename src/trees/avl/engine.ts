@@ -8,6 +8,12 @@ export class AVLEngine {
 
     constructor() { }
 
+    load(nodes: BinaryTreeNode<number>[], rootId: NodeId | null) {
+        this.nodes.clear();
+        nodes.forEach((node) => this.nodes.set(node.id, { ...node }));
+        this.rootId = rootId;
+    }
+
     clear() {
         this.nodes.clear();
         this.rootId = null;

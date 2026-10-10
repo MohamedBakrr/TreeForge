@@ -8,6 +8,7 @@ import { BSTEngine } from '../../../trees/bst/engine';
 import { BinaryTreeNode, NodeId } from '../../../trees/core/types';
 import { TraceBuilder, TraceEvent } from '../../../trees/trace/events';
 import { TreeCanvas } from '../../../visualization/TreeCanvas';
+import { readWorkspaceSnapshot, writeWorkspaceSnapshot } from '../workspaceStorage';
 
 type WorkspaceEngine = BSTEngine | AVLEngine;
 type TraversalOrder = 'inorder' | 'preorder' | 'postorder' | 'levelorder';
@@ -26,8 +27,23 @@ function createSeededEngine(treeType: 'bst' | 'avl'): WorkspaceEngine {
     return engine;
 }
 
+function restoreEngine(treeType: 'bst' | 'avl') {
+    const restored = readWorkspaceSnapshot(treeType);
+    const engine = createEngine(treeType);
+
+    if (restored.snapshot) {
+        engine.load(restored.snapshot.nodes, restored.snapshot.rootId);
+    } else {
+        const seededEngine = createSeededEngine(treeType);
+        engine.load(Array.from(seededEngine.nodes.values()), seededEngine.rootId);
+    }
+
+    return { engine, error: restored.error };
+}
+
 function WorkspaceEditor({ treeType }: { treeType: 'bst' | 'avl' }) {
-    const [engine, setEngine] = useState<WorkspaceEngine>(() => createSeededEngine(treeType));
+    const [initialWorkspace] = useState(() => restoreEngine(treeType));
+    const [engine, setEngine] = useState<WorkspaceEngine>(() => initialWorkspace.engine);
     const [nodes, setNodes] = useState<Map<NodeId, BinaryTreeNode<number>>>(() => new Map(engine.nodes));
     const [rootId, setRootId] = useState<NodeId | null>(engine.rootId);
     const [inputValue, setInputValue] = useState('');
@@ -41,6 +57,7 @@ function WorkspaceEditor({ treeType }: { treeType: 'bst' | 'avl' }) {
     const [traversalResult, setTraversalResult] = useState<number[] | null>(null);
     const [isTraversalPlaying, setIsTraversalPlaying] = useState(false);
     const [resultNotice, setResultNotice] = useState<string | null>(null);
+    const [persistenceError, setPersistenceError] = useState<string | null>(initialWorkspace.error);
     const traversalResultRef = useRef<HTMLDivElement>(null);
     const attachTraversalResult = useCallback((element: HTMLDivElement | null) => {
         traversalResultRef.current = element;
@@ -55,19 +72,12 @@ function WorkspaceEditor({ treeType }: { treeType: 'bst' | 'avl' }) {
     }, [traversalResult]);
 
     useEffect(() => {
-        const freshEngine = createSeededEngine(treeType);
-        setEngine(freshEngine);
-        setNodes(new Map(freshEngine.nodes));
-        setRootId(freshEngine.rootId);
-        setActiveTrace([]);
-        setCurrentStepIndex(-1);
-        setTraversalResult(null);
-        setIsTraversalPlaying(false);
-        setResultNotice(null);
-        setSelectedNodeId(null);
-        setInputValue('');
-        setInputError('');
-    }, [treeType]);
+        const error = writeWorkspaceSnapshot(treeType, {
+            nodes: Array.from(nodes.values()),
+            rootId,
+        });
+        setPersistenceError(error);
+    }, [nodes, rootId, treeType]);
 
     const currentEvent = currentStepIndex >= 0 && currentStepIndex < activeTrace.length
         ? activeTrace[currentStepIndex]
@@ -333,6 +343,11 @@ function WorkspaceEditor({ treeType }: { treeType: 'bst' | 'avl' }) {
 
     return (
         <div className="flex min-h-screen flex-col bg-main-bg text-text-primary">
+            {persistenceError && (
+                <div role="alert" className="border-b border-warning/40 bg-[#17150f] px-4 py-2 text-center text-sm text-warning">
+                    {persistenceError}
+                </div>
+            )}
             {resultNotice && (
                 <div
                     role="status"
@@ -682,5 +697,5 @@ export function WorkspacePage() {
         return <Navigate to={treeType ? `/learn/${treeType}` : '/learn'} replace />;
     }
 
-    return <WorkspaceEditor treeType={treeType} />;
+    return <WorkspaceEditor key={treeType} treeType={treeType} />;
 }
