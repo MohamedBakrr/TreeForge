@@ -97,8 +97,8 @@ For a BST, inorder traversal yields values in ascending order. That property doe
 | `/learn/binary-tree` | Binary-tree chapter | Index |
 | `/learn/bst` | BST chapter | Index |
 | `/learn/avl` | AVL chapter | Index |
-| `/workspace/bst` | Interactive BST editor | `noindex,follow` |
-| `/workspace/avl` | Interactive AVL editor | `noindex,follow` |
+| `/workspace/bst` | Interactive BST editor | Index |
+| `/workspace/avl` | Interactive AVL editor | Index |
 
 Unknown paths display a branded not-found page.
 
@@ -238,7 +238,8 @@ SEO includes:
 - Canonical URLs, Open Graph fields, and Twitter card metadata.
 - `WebApplication` JSON-LD on the landing document.
 - `public/robots.txt` and a sitemap of public learning routes.
-- `noindex,follow` on interactive workspace routes.
+- Self-canonical, indexable interactive workspace routes included in the sitemap.
+- `public/llms.txt` with a concise, crawler-friendly product and route overview.
 
 Deploy by importing the GitHub repository into Vercel or running the Vercel CLI. The production domain is `tree-forge.vercel.app`. The configured production defaults are:
 

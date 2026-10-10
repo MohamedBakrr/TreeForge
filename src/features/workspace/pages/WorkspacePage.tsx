@@ -357,10 +357,11 @@ function WorkspaceEditor({ treeType }: { treeType: 'bst' | 'avl' }) {
                 </div>
             )}
             <SeoHead
-                title={`Interactive ${treeType.toUpperCase()} Tree Workspace | TreeForge`}
-                description={`Build and explore an interactive ${treeType.toUpperCase()} tree. Insert, edit, and remove nodes, then trace traversals step by step.`}
+                title={`Interactive ${treeType === 'bst' ? 'Binary Search Tree' : 'AVL Tree'} Workspace | TreeForge`}
+                description={treeType === 'bst'
+                    ? 'Build a binary search tree, edit and remove nodes, and visualize inorder, preorder, postorder, and level-order traversals.'
+                    : 'Build a self-balancing AVL tree, edit and remove nodes, and visualize rotations and tree traversals.'}
                 path={`/workspace/${treeType}`}
-                noIndex
             />
             <header className="flex h-16 shrink-0 items-center justify-between border-b border-border-main bg-[#0c0e0d] px-4 sm:px-6">
                 <div className="flex min-w-0 items-center gap-3 sm:gap-5">
@@ -369,7 +370,9 @@ function WorkspaceEditor({ treeType }: { treeType: 'bst' | 'avl' }) {
                     </Link>
                     <span className="hidden text-xs font-semibold tracking-[0.18em] sm:inline">TREEFORGE</span>
                     <span className="h-5 w-px bg-border-main" />
-                    <h1 className="truncate text-sm font-medium tracking-tight sm:text-base">Tree workspace</h1>
+                    <h1 className="truncate text-sm font-medium tracking-tight sm:text-base">
+                        {treeType === 'bst' ? 'Binary search tree workspace' : 'AVL tree workspace'}
+                    </h1>
                     <span className="border-l border-border-main pl-3 font-mono text-xs uppercase text-text-muted">{treeType}</span>
                 </div>
                 <nav aria-label="Main navigation" className="flex shrink-0 items-center gap-3 sm:gap-5">

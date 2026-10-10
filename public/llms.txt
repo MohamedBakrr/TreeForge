@@ -1,0 +1,25 @@
+# TreeForge
+
+> TreeForge is an interactive educational application for learning tree data structures through visual examples, editable trees, and step-by-step algorithm traces.
+
+## Product
+
+TreeForge helps learners understand general trees, binary trees, binary search trees, and AVL trees. The interactive BST and AVL workspaces support node insertion, editing, deletion, repositioning, and inorder, preorder, postorder, and level-order traversal.
+
+## Pages
+
+- [Home](https://tree-forge.vercel.app/): Product introduction and links to learning materials.
+- [Learning hub](https://tree-forge.vercel.app/learn): Overview of the available tree lessons.
+- [General trees](https://tree-forge.vercel.app/learn/general-tree): Parent-child hierarchies with any number of children.
+- [Binary trees](https://tree-forge.vercel.app/learn/binary-tree): Trees with at most two child positions and no implied ordering.
+- [Binary search trees](https://tree-forge.vercel.app/learn/bst): Ordered binary trees and search operations.
+- [AVL trees](https://tree-forge.vercel.app/learn/avl): Self-balancing binary search trees and rotations.
+- [Interactive BST workspace](https://tree-forge.vercel.app/workspace/bst): Build and explore a binary search tree.
+- [Interactive AVL workspace](https://tree-forge.vercel.app/workspace/avl): Build and explore a self-balancing AVL tree.
+
+## Technical notes
+
+- The interactive workspaces run the actual tree algorithms and display operation traces.
+- Inorder traversal of a binary search tree visits values in ascending order.
+- AVL insertions and deletions rebalance the tree using rotations.
+- Workspace routes are interactive educational tools, not static reference articles.
